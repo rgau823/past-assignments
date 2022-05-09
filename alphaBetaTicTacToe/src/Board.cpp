@@ -1,7 +1,7 @@
 /*
-CPSC 3750 Rocky Au
+Rocky Au
 Class to represent states in the search algorithm
-April, 2022
+Last updated May 9, 2022
 
 Source file for the board class. The class enforces the rules of the game and plays it.
 */
@@ -31,6 +31,7 @@ bool Board::checkDraw() {
 }
 
 bool Board::checkWinner(char c) {
+	//Basic checking if a winner is available horizontally, vertically, diagonally
 	if (
 		((board[0] == board[1]) && (board[1] == board[2]) && (board[0] == c)) ||
 		((board[3] == board[4]) && (board[4] == board[5]) && (board[3] == c)) ||

@@ -1,7 +1,7 @@
 /*
-CPSC 3750 Rocky Au
+Rocky Au
 Source file to represent AI player for TicTacToe
-April 1, 2022
+Last updated: May 9, 2022
 */
 
 #include <iostream>
@@ -14,7 +14,8 @@ AIPlayer::AIPlayer(){}
 
 int AIPlayer::score(int t, Board* game) {
 	if (game->checkDraw()) {
-		return 2;
+	//A draw is a neutral score
+		return 2; 
 	}
 	int winP = 0;
 	if(game->checkEnd()) {
@@ -24,12 +25,14 @@ int AIPlayer::score(int t, Board* game) {
 		if (game->checkWinner('O')) {
 			winP = 1;
 		}
-		return winP * ((10 - t) + 1);
+	//Score based on how many squares are left. A faster victory is a higher score.
+		return winP * ((10 - t) + 1); 
 	}
 	return 0;
 }
 
 int AIPlayer::alphaBeta(Board* game) {
+	//Game gets initialized with alpha and beta values. Pair is the actual square where player makes move, and score
 	int currDepth = game->getTurn();
 	int alphaInit = -10000;
 	int betaInit = 10000;
@@ -38,7 +41,7 @@ int AIPlayer::alphaBeta(Board* game) {
 }
 
 std::pair<int, int> AIPlayer::maxSearch(Board* game, int t, int a, int b) {
-	int depth = t + 1;
+	int depth = t + 1; 
 	int alpha = a;
 	int beta = b;
 	int value = -10000;

@@ -1,7 +1,7 @@
 /*
-CPSC 3750 Rocky Au
+Rocky Au
 Class to represent AI player for TicTacToe
-April 1, 2022
+Last updated: May 9, 2022
 */
 
 
@@ -20,12 +20,24 @@ class AIPlayer {
  public:
  	AIPlayer();
 
+    /*
+    The function that will start the search. It returns the action for the AI player to take
+    */
  	int alphaBeta(Board* game);
 
+    /*
+    The function for the max player search
+    */
  	std::pair<int, int> maxSearch(Board* game, int t, int a, int b);
 
+    /*
+    The function for the min player search
+    */
  	std::pair<int, int> minSearch(Board* game, int t, int a, int b);
 
+    /*
+    The function to calculate the score for a board. This helps the AI player prune which move to do
+    */
  	int score(int depth, Board* game);
 };
 
